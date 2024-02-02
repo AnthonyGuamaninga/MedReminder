@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">My Application Login</string>
+    <string name="txt_medical_assistant">Recordatorio de medicinas</string>
+    <string name="txt_start_session">Ingresa con tu usuario y contraseña de Asistente Médico</string>
+    <string name="txt_insert_user">Usuario</string>
+    <string name="txt_insert_password">Contraseña</string>
+    <string name="link_register">Crear una cuenta</string>
+    <string name="txt_access">Ingresar con:</string>
+    <string name="txt_welcome">Bienvenido %s</string>
+    <string name="txt_name">Alfred</string>
+    <string name="txt_lastName">Guamaninga</string>
+    <string name="txt_genre">Masculino</string>
+
+    <string name="bnt_return">Regresar</string>
+    <string name="btn_login">Acceder</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

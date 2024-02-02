@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#442a6f</color>
+    <color name="red_dark">#540b0e</color>
+    <color name="purple">#73146b</color>
+    <color name="gray_dark">#303942</color>
+    <!-- Medical Assistant -->
+    <color name="gray_am">#e2d8d9</color>
+    <color name="blue_dark_am">#13005c</color>
+    <color name="celeste_am">#089cf6</color>
+
+    <color name="green_white_am">#7cefac</color>
+    <color name="yellow_lemon_am">#d8df21</color>
+    <color name="green_lemon_am">#8dc53f</color>
+
+</resources>
