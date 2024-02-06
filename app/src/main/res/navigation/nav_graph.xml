@@ -17,5 +17,10 @@
         android:id="@+id/detailFragment"
         android:name="com.grupo4.recordatoriosmedicamentos.ui.fragments.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="idDrug"
+            app:argType="string"
+            android:defaultValue="NA" />
+    </fragment>
 </navigation>

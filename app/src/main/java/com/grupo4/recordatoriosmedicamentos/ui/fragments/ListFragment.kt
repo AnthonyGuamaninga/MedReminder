@@ -25,7 +25,7 @@ class ListFragment : Fragment() {
 
     private lateinit var binding: FragmentListBinding
     private var usersList : MutableList<FullInfoDrugsLG> = ArrayList()
-    private var userDiffAdapter = DrugsAdapterDiffUtil( {selectAnime(it)})
+    private var userDiffAdapter = DrugsAdapterDiffUtil( {selectDrug(it)})
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,8 +39,10 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initRecyclerView()
     }
+
 
     private fun initRecyclerView(){
         binding.rvUsers.adapter = userDiffAdapter
@@ -86,12 +88,11 @@ class ListFragment : Fragment() {
 
     }
 
-    private fun selectAnime(anime: FullInfoDrugsLG){
+    private fun selectDrug(drug: FullInfoDrugsLG){
         findNavController()
             .navigate(
-                ListFragmentDirections.actionListFragmentToDetailFragment()
+                ListFragmentDirections.actionListFragmentToDetailFragment(idDrug = drug.spl_id)
             )
-
     }
 
 

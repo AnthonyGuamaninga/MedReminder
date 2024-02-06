@@ -1,52 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
 
-    <ImageView
-        android:id="@+id/imgDrug"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_margin="3dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:checkable="true"
+    android:clickable="true"
+    android:focusable="true"
+    tools:ignore="MissingConstraints"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp"
+    app:cardUseCompatPadding="true"
 
-    <LinearLayout
-        android:layout_margin="5dp"
-        android:orientation="vertical"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imgDrug"
-        app:layout_constraintTop_toTopOf="parent">
+    app:cardBackgroundColor="@color/dark_green">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
-        <TextView
-            android:id="@+id/txtGenericName"
-            tools:text="Nombre generico"
-            android:textSize="18sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/imgDrug"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="3dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/txtRoute"
-            tools:text="Ruta de consumo"
-            android:textSize="16sp"
-            android:layout_marginTop="5dp"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgDrug"
+            app:layout_constraintTop_toTopOf="parent">
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
-        <Button
-            android:id="@+id/btnInformacion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:backgroundTint="@color/celeste_am"
-            android:text="Crear recordatorio"/>
+            <TextView
+                android:id="@+id/txtGenericName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                tools:text="Nombre generico" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/txtRoute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                android:textSize="16sp"
+                tools:text="Ruta de consumo" />
+
+            <Button
+                android:id="@+id/btnInformacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/theme_buttom"
+                android:layout_margin="10dp"
+                android:textSize="18dp"
+                android:backgroundTint="@color/light_green"
+                android:text="Detalles"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
+

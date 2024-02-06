@@ -25,7 +25,7 @@ class DrugsAdapterDiffUtil (
             binding.imgDrug.load(R.drawable.logo_ma)
 
 
-            binding.imgDrug.setOnClickListener({
+            binding.btnInformacion.setOnClickListener({
                 onSelectItem(item)
             })
         }
