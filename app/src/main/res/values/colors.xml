@@ -15,4 +15,8 @@
     <color name="yellow_lemon_am">#d8df21</color>
     <color name="green_lemon_am">#8dc53f</color>
 
+    <color name="dark_green">#0B5563</color>
+    <color name="light_green">#2DAD99</color>
+    <color name="beige">#E8D6CB</color>
+
 </resources>

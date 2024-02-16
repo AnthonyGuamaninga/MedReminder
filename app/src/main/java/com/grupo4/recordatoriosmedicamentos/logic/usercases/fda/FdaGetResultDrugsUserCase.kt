@@ -23,18 +23,14 @@ class FdaGetResultDrugsUserCase {
                 val infoDrug = call.body()!!
                 infoDrug.results.forEach{
 
-                    //val fda = it.openfda
-                    if (it.openfda != null) {
+                    if (it.openfda != null &&
+                        it.openfda.spl_id != null &&
+                        it.openfda.manufacturer_name != null &&
+                        it.openfda.brand_name != null &&
+                        it.openfda.generic_name != null &&
+                        it.openfda.route != null) {
+                        Log.d("TAG", it.openfda.toString())
                         items.add(it.openfda.getFullInfoDrugLG())
-                        /*items.add(
-                            FullInfoDrugsLG(
-                                fda.spl_id.firstOrNull() ?: "",
-                                fda.manufacturer_name.firstOrNull() ?: "",
-                                fda.brand_name.firstOrNull() ?: "",
-                                fda.generic_name.firstOrNull() ?: "",
-                                fda.route.firstOrNull() ?: ""
-                            )
-                        )*/
                     }
                 }
 
