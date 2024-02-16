@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface ResultDrugsEndPoint {
 
-    @GET("?limit=94")
+    @GET("?limit=150")
     suspend fun getResultDrugs(): Response<ResultDrugs>
 
 }

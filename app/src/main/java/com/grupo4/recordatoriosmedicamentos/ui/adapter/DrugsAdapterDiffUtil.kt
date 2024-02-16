@@ -22,7 +22,16 @@ class DrugsAdapterDiffUtil (
             onSelectItem: (FullInfoDrugsLG) -> Unit){
             binding.txtGenericName.text = item.generic_name.toString()
             binding.txtRoute.text = item.route.toString()
-            binding.imgDrug.load(R.drawable.logo_ma)
+            when(item.route){
+                "ORAL" -> binding.imgDrug.load(R.drawable.m_oral)
+                "INJECTION" -> binding.imgDrug.load(R.drawable.m_injection)
+                "INTRAVENOUS" -> binding.imgDrug.load(R.drawable.m_intravenous)
+                "SUBCUTANEOUS" -> binding.imgDrug.load(R.drawable.m_subcutaneous)
+                "OPHTHALMIC" -> binding.imgDrug.load(R.drawable.m_ophthalmic)
+                "TOPICAL" -> binding.imgDrug.load(R.drawable.m_topical)
+                "INTRAMUSCULAR" -> binding.imgDrug.load(R.drawable.m_intramuscular)
+                else -> binding.imgDrug.load(R.drawable.logo_ma)
+            }
 
 
             binding.btnInformacion.setOnClickListener({

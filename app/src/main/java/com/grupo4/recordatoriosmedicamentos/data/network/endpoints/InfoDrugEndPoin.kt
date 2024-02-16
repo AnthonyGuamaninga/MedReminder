@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface InfoDrugEndPoin {
 
-    @GET("?search=openfda.spl_id:{id}")
-    suspend fun getDrugFullInfo(@Path("id") idDrug: String): Response<ResultDrugs>
+    @GET("?limit=150")
+    suspend fun getDrugFullInfo(@Query("search") searchQuery: String): Response<ResultDrugs>
 
 }

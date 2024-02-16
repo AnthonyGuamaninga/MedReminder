@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.google.android.material.snackbar.Snackbar
 import com.grupo4.recordatoriosmedicamentos.R
 import com.grupo4.recordatoriosmedicamentos.databinding.FragmentDetailBinding
 import com.grupo4.recordatoriosmedicamentos.ui.viewModels.DetailViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class DetailFragment : Fragment() {
 
@@ -30,7 +33,7 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //binding.txtIdAnime.text = args.idAnime.toString()
+
         initObservers()
         detailVM.loadInfoDrug(args.idDrug)
     }
@@ -42,8 +45,21 @@ class DetailFragment : Fragment() {
             binding.txtBrandName.text = drug.brand_name
             binding.txtGenericName.text = drug.generic_name
             binding.txtManufacturer.text = drug.manufacturer_name
-            binding.imgDrug.load(R.drawable.logo_med)
+            binding.txtRoute.text = drug.route
+
+            when(drug.route){
+                "ORAL" -> binding.imgDrug.load(R.drawable.m_oral)
+                "INJECTION" -> binding.imgDrug.load(R.drawable.m_injection)
+                "INTRAVENOUS" -> binding.imgDrug.load(R.drawable.m_intravenous)
+                "SUBCUTANEOUS" -> binding.imgDrug.load(R.drawable.m_subcutaneous)
+                "OPHTHALMIC" -> binding.imgDrug.load(R.drawable.m_ophthalmic)
+                "TOPICAL" -> binding.imgDrug.load(R.drawable.m_topical)
+                "INTRAMUSCULAR" -> binding.imgDrug.load(R.drawable.m_intramuscular)
+                else -> binding.imgDrug.load(R.drawable.logo_ma)
+            }
+
             // demas binding
+
         }
 
         detailVM.error.observe(requireActivity()){errorMessage->

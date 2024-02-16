@@ -16,7 +16,7 @@ class FdaGetInfoDrugUserCase {
         try {
             val baseService = RetrofitBase.getRetrofitFDAConnection()
             val service = baseService.create(InfoDrugEndPoin::class.java)
-            val call = service.getDrugFullInfo(idDrug)
+            val call = service.getDrugFullInfo("openfda.spl_id:$idDrug")
 
 
             if(call.isSuccessful){

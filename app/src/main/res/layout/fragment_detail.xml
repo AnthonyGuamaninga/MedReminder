@@ -1,77 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
     android:orientation="vertical"
+    android:background="@drawable/background_button"
     tools:context=".ui.fragments.DetailFragment">
 
 
-    <TextView
-        android:id="@+id/txtGenericName"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:textSize="24dp"
-        tools:text="ID anime" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+        <TextView
+            android:id="@+id/txtGenericName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/theme_title"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textSize="24dp"
+            tools:text="Nombre del medicamento" />
 
-    <ImageView
-        android:id="@+id/imgDrug"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:layout_margin="20dp" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Documento de identificación:" />
-
-    <TextView
-        android:id="@+id/idDrug"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fabricante:" />
-
-    <TextView
-        android:id="@+id/txtManufacturer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Marca o nombre comercial:" />
-
-    <TextView
-        android:id="@+id/txtBrandName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="via de administracion:" />
-
-    <TextView
-        android:id="@+id/txtRoute"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/imgDrug"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:scaleType="fitXY" />
 
 
-    <Button
-        android:id="@+id/btnAgregar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Agregar medicina al recordatorio" />
+        <TextView
+            style="@style/theme_normal2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Documento de identificación:" />
+
+        <TextView
+            android:id="@+id/idDrug"
+            style="@style/theme_normal2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textStyle="bold"
+            android:maxLines="1"/>
+
+        <TextView
+            style="@style/theme_normal2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fabricante:" />
+
+        <TextView
+            android:id="@+id/txtManufacturer"
+            style="@style/theme_normal2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textStyle="bold"
+            android:maxLines="1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/theme_normal2"
+            android:text="Marca o nombre comercial:" />
+
+        <TextView
+            android:id="@+id/txtBrandName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/theme_normal2"
+            android:layout_marginBottom="15dp"
+            android:textStyle="bold"
+            android:maxLines="1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/theme_normal2"
+            android:text="via de administracion:" />
+
+        <TextView
+            android:id="@+id/txtRoute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/theme_normal2"
+            android:layout_marginBottom="15dp"
+            android:textStyle="bold"
+            android:maxLines="1"/>
 
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnAgregar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            style="@style/theme_buttom"
+            android:text="Agregar medicina al recordatorio" />
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

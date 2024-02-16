@@ -58,7 +58,7 @@ class ListFragment : Fragment() {
 
     private fun loadDataRecyclerView(){
         lifecycleScope.launch (Dispatchers.Main) {
-            binding.progresBar.visibility = View.VISIBLE
+            binding.animationView.visibility = View.VISIBLE
 
             val resp = withContext(Dispatchers.IO){
                 FdaGetResultDrugsUserCase().invoke()
@@ -78,7 +78,7 @@ class ListFragment : Fragment() {
                     .show()
             }
 
-            binding.progresBar.visibility = View.GONE
+            binding.animationView.visibility = View.GONE
         }
     }
 

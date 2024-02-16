@@ -23,7 +23,13 @@ class FdaGetResultDrugsUserCase {
                 val infoDrug = call.body()!!
                 infoDrug.results.forEach{
 
-                    if (it.openfda != null && it.openfda.spl_id != null) {
+                    if (it.openfda != null &&
+                        it.openfda.spl_id != null &&
+                        it.openfda.manufacturer_name != null &&
+                        it.openfda.brand_name != null &&
+                        it.openfda.generic_name != null &&
+                        it.openfda.route != null) {
+                        Log.d("TAG", it.openfda.toString())
                         items.add(it.openfda.getFullInfoDrugLG())
                     }
                 }

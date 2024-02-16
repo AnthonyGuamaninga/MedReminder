@@ -1,8 +1,10 @@
 package com.grupo4.recordatoriosmedicamentos.ui.viewModels
 
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.grupo4.recordatoriosmedicamentos.databinding.FragmentDetailBinding
 import com.grupo4.recordatoriosmedicamentos.logic.entities.FullInfoDrugsLG
 import com.grupo4.recordatoriosmedicamentos.logic.usercases.fda.FdaGetInfoDrugUserCase
 import com.grupo4.recordatoriosmedicamentos.logic.usercases.fda.FdaGetResultDrugsUserCase
