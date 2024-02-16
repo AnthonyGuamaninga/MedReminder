@@ -3,7 +3,6 @@ package com.grupo4.recordatoriosmedicamentos.ui.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
 import android.provider.Settings
 import android.util.Log
 import android.view.View
@@ -14,12 +13,10 @@ import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
-import com.grupo4.recordatoriosmedicamentos.R
-
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-
+import com.google.firebase.auth.auth
+import com.grupo4.recordatoriosmedicamentos.R
 import com.grupo4.recordatoriosmedicamentos.databinding.ActivityLoginBinding
 import com.grupo4.recordatoriosmedicamentos.logic.usercases.local.LoginUseCase
 import com.grupo4.recordatoriosmedicamentos.core.Constants
@@ -55,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun initListeners() {
         binding.btnAccess.setOnClickListener {
-            signInUsers(
+            SingInUsers(
                 binding.txtInputUser.text.toString(),
                 binding.txtInputPassword.text.toString()
             )

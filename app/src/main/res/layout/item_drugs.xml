@@ -26,7 +26,8 @@
             android:layout_height="120dp"
             android:layout_margin="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -43,7 +44,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                tools:text="Nombre generico" />
+                tools:text="Nombre generico"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/txtRoute"
@@ -52,7 +54,8 @@
                 android:layout_marginTop="5dp"
 
                 android:textSize="16sp"
-                tools:text="Ruta de consumo" />
+                tools:text="Ruta de consumo"
+                android:textColor="@color/white"/>
 
             <Button
                 android:id="@+id/btnInformacion"
