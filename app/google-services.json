@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "215174822131",
+    "project_id": "medreminder-978b6",
+    "storage_bucket": "medreminder-978b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215174822131:android:a8a467779034e7ff6cdf86",
+        "android_client_info": {
+          "package_name": "com.grupo4.recordatoriosmedicamentos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_4eJVhbUeF_diS1XHmaIGCBg24QeuNuU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
