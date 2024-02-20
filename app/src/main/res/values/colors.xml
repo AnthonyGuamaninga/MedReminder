@@ -19,4 +19,46 @@
     <color name="light_green">#2DAD99</color>
     <color name="beige">#E8D6CB</color>
 
+
+    <!--Hora si-->
+
+    <color name="fondo1_cyan">#2DA299</color>
+    <color name="btn1">#0B5563</color>
+    <color name="fondo2">#0E4C58</color>
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="_bg__promociones_ek2_color">#2DA299</color>
+    <color name="_bg__search_ek1_color">#000000</color>
+    <color name="rectangle_141_color">#FFFFFF</color>
+    <color name="base_color">#554FFC</color>
+    <color name="__a_donde_viajas__color">#373484</color>
+    <color name="barcelona_color">#1F1F33</color>
+    <color name="__220_color">#EC326A</color>
+    <color name="desde_color">#5F5E73</color>
+
+    //recetas
+
+    <color name="_bg__listarecetas_ek2_color">#2DA299</color>
+    <color name="_bg__line_md_menu_ek1_color">#000000</color>
+    <color name="rectangle_4_color">#E8D6CB</color>
+    <color name="buscar____color">#A89F9F</color>
+    <color name="rectangle_12_color">#ffffff</color>
+    <color name="agregar_receta_color">#FFFFFF</color>
+    <color name="rectangle_16_color">#D7D7D7</color>
+    <color name="_bg__frame_4_ek1_color">#0B5563</color>
+
+    //ingresar nueva receta
+    <color name="_bg__registromedicamentos_ek2_color">#0E4C58</color>
+    <color name="registra_tu_medicina_color">#FFFFFF</color>
+    <color name="ejm__ibuprofeno__paracetamol__etc__color">#D9D9D9</color>
+    <color name="rectangle_11_color">#ffffff</color>
+
 </resources>
