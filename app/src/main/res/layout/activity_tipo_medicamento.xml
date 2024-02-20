@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo2"
+    tools:context=".ui.activities.MedicamentosRegistroMapaActivity">
+
+    <ImageView
+        android:id="@+id/img_menu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ico_baseline_menu" />
+
+
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+
+
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_logo1removebg_51x151" />
+
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:checkedButton="@+id/radio_button_1"
+        android:background="#2DAD99"
+
+        app:layout_constraintBottom_toTopOf="@+id/btn_siguiente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <RadioButton
+            android:id="@+id/radio_button_pastillas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Pastillas" />
+
+        <RadioButton
+            android:id="@+id/radio_button_inyeccion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Inyeccion" />
+
+        <RadioButton
+            android:id="@+id/radio_button_gotas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Gotas" />
+
+        <RadioButton
+            android:id="@+id/radio_button_solucion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Solucion" />
+
+        <RadioButton
+            android:id="@+id/radio_button_inhalador"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:enabled="false"
+            android:text="Inhalador" />
+        <RadioButton
+            android:id="@+id/radio_button_otro"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:enabled="false"
+            android:text="Otro" />
+
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/btn_siguiente"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="@color/fondo1_cyan"
+
+        android:text="Siguiente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
