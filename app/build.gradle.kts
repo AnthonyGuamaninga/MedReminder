@@ -94,4 +94,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth-ktx")
 
+    //FireStore
+    implementation("com.google.firebase:firebase-firestore")
+
 }

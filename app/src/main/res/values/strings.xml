@@ -7,8 +7,8 @@
     <string name="link_register">¿No tienes cuenta? Registrate</string>
     <string name="txt_access">Ingresar con:</string>
     <string name="txt_welcome">Bienvenido %s</string>
-    <string name="txt_name">Alfred</string>
-    <string name="txt_lastName">Guamaninga</string>
+    <string name="txt_name">Nombre</string>
+    <string name="txt_lastName">Apellido</string>
     <string name="txt_genre">Masculino</string>
 
     <string name="bnt_return">Regresar</string>
@@ -16,5 +16,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="biometric_no_hardware">El dispositivo no posee un sensor biométrico</string>
+    <string name="nav_open">1</string>
+    <string name="nav_close">0</string>
 
 </resources>

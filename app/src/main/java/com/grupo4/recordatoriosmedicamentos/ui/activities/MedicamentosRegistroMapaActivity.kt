@@ -43,7 +43,7 @@ class MedicamentosRegistroMapaActivity : AppCompatActivity() {
             dpd.show()
         }
 
-        bindingMenuRegistroMedicamento.activityMedicamentoRegistro.edtTextImputHoraInicio.setOnClickListener {
+        /*bindingMenuRegistroMedicamento.activityMedicamentoRegistro.edtTextImputHoraInicio.setOnClickListener {
             val c = Calendar.getInstance()
             val hour = c.get(Calendar.HOUR_OF_DAY)
             val minute = c.get(Calendar.MINUTE)
@@ -54,7 +54,7 @@ class MedicamentosRegistroMapaActivity : AppCompatActivity() {
             }, hour, minute, true)
 
             tpd.show()
-        }
+        }*/
 
         bindingMenuRegistroMedicamento.activityMedicamentoRegistro.edtInputCaducidad.setOnClickListener {
             val c = Calendar.getInstance()

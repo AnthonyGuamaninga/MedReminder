@@ -5,7 +5,7 @@ import com.grupo4.recordatoriosmedicamentos.core.Constants
 import com.grupo4.recordatoriosmedicamentos.core.getFullInfoDrugLG
 //import com.grupo4.recordatoriosmedicamentos.core.getFullInfoDrugLG
 import com.grupo4.recordatoriosmedicamentos.data.network.endpoints.ResultDrugsEndPoint
-import com.grupo4.recordatoriosmedicamentos.data.network.repository.RetrofitBase
+import com.grupo4.recordatoriosmedicamentos.data.network.repository.retrofit.RetrofitBase
 import com.grupo4.recordatoriosmedicamentos.logic.entities.FullInfoDrugsLG
 
 class FdaGetResultDrugsUserCase {
