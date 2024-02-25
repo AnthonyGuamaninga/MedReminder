@@ -18,5 +18,6 @@
     <string name="biometric_no_hardware">El dispositivo no posee un sensor biométrico</string>
     <string name="nav_open">1</string>
     <string name="nav_close">0</string>
+    <string name="maps_api_key">AIzaSyC8rckkXmAG7WQI6ut3KyP2hstYCdNgj9E</string>
 
 </resources>
