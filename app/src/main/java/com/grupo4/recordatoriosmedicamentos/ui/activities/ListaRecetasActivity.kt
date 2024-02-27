@@ -7,6 +7,6 @@ import com.grupo4.recordatoriosmedicamentos.R
 class ListaRecetasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lista_recetas)
+        setContentView(R.layout.item_receta)
     }
 }

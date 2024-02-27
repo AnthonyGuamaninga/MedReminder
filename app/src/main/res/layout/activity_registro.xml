@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo2"
+    tools:context=".ui.activities.RegistroActivity">
+
+    <ImageView
+        android:id="@+id/img_menu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ico_baseline_menu" />
+
+
+    <ImageView
+        android:id="@+id/logo1_removebg_preview__1__4"
+        android:layout_width="151dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="logo1_removebg_preview__1__2"
+        android:src="@drawable/img_logo1removebg_51x151"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/registra_tu_medicina"
+        android:layout_width="302.8dp"
+        android:layout_height="42.8dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="Ingresa tus datos"
+        android:textColor="@color/registra_tu_medicina_color"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo1_removebg_preview__1__4" />
+
+    <TextView
+        android:id="@+id/lblMensaje"
+        android:layout_width="327.4dp"
+        android:layout_height="38.4dp"
+        android:layout_marginTop="20dp"
+        android:gravity="left"
+        android:text="Ingrese sus datos dentro de los siguientes campos:"
+        android:textColor="@color/registra_tu_medicina_color"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registra_tu_medicina" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblMensaje">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_nombre"
+            style="@style/theme_registro"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/txt_name"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:textColorHint="@color/gray_am"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblMensaje" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_apellido"
+            style="@style/theme_registro"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/txt_lastName"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:textColorHint="@color/gray_am"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblMensaje" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_correo"
+            style="@style/theme_registro"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/txt_insert_user"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:textColorHint="@color/gray_am"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblMensaje" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_password"
+            style="@style/theme_registro"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/txt_insert_password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:textColorHint="@color/gray_am"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblMensaje" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="150dp"
+
+        android:layout_height="50dp"
+        android:layout_marginBottom="56dp"
+
+        android:backgroundTint="@color/fondo1_cyan"
+        android:text="Registrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

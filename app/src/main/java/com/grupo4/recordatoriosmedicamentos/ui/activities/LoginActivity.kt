@@ -1,12 +1,13 @@
 package com.grupo4.recordatoriosmedicamentos.ui.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
 import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
@@ -18,9 +19,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.grupo4.recordatoriosmedicamentos.R
 import com.grupo4.recordatoriosmedicamentos.databinding.ActivityLoginBinding
-import com.grupo4.recordatoriosmedicamentos.logic.usercases.local.LoginUseCase
-import com.grupo4.recordatoriosmedicamentos.core.Constants
-import com.grupo4.recordatoriosmedicamentos.ui.core.My_Application
 import com.grupo4.recordatoriosmedicamentos.ui.viewModels.LoginViewModel
 import java.util.concurrent.Executor
 
@@ -32,7 +30,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
-    private val loginViewModel : LoginViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
+    private lateinit var dialog: AlertDialog
 
     private lateinit var auth: FirebaseAuth
 
@@ -52,39 +51,54 @@ class LoginActivity : AppCompatActivity() {
 
     fun initListeners() {
         binding.btnAccess.setOnClickListener {
-            SingInUsers(
-                binding.txtInputUser.text.toString(),
-                binding.txtInputPassword.text.toString()
-            )
+            var user=binding.txtInputUser.text.toString()
+            var password=binding.txtInputPassword.text.toString()
+            if (user.isBlank() && password.isBlank()) {
+                dialog =
+                    AlertDialog.Builder(this).setTitle("Advertencia").setMessage("campos vacios")
+                        .setPositiveButton("Ok") { _, _ ->
+                            this
+                        }.create()
+                dialog.show()
+            } else {
+                loginViewModel.singInUser(
+                    binding.txtInputUser.text.toString(),
+                    binding.txtInputPassword.text.toString()
+                )
+            }
+
+
         }
-        binding.imgfinger.setOnClickListener{
+        binding.imgfinger.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)
         }
         binding.linkAccountCreate.setOnClickListener {
-            createNewUser(binding.txtInputUser.text.toString(), binding.txtInputPassword.text.toString())
+            startActivity(Intent(this@LoginActivity, RegistroActivity::class.java))
+
         }
     }
-    
+
+
     override fun onStart() {
         super.onStart()
-
-        val currentUser= auth.currentUser
-        if(currentUser != null){
-            startActivity(Intent(this,MainActivity::class.java))
-        }else{
-
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val intent = Intent(this, VistaPrincipalActivity::class.java)
+            intent.putExtra("usuarioID", currentUser.uid)
+            startActivity(intent)
         }
+
     }
 
 
-    private fun autenticationVariables(){
+    private fun autenticationVariables() {
         executor = ContextCompat.getMainExecutor(this)
         biometricPrompt = BiometricPrompt(this, executor,
             object : BiometricPrompt.AuthenticationCallback() {
 
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    startActivity(Intent(this@LoginActivity, VistaPrincipalActivity::class.java))
                 }
 
             })
@@ -96,19 +110,33 @@ class LoginActivity : AppCompatActivity() {
             .build()
     }
 
-    private fun initObservables(){
-        loginViewModel.resultCheckBiometric.observe(this){code ->
-            when(code){
+    private fun initObservables() {
+        loginViewModel.user.observe(this) {
+            startActivity(Intent(this, VistaPrincipalActivity::class.java))
+        }
+        loginViewModel.error.observe(this) {
+            Snackbar.make(
+                this,
+                binding.txtInputUser,
+                it,
+                Snackbar.LENGTH_LONG
+            ).show()
+        }
+        loginViewModel.resultCheckBiometric.observe(this) { code ->
+            when (code) {
                 BiometricManager.BIOMETRIC_SUCCESS -> {
                     binding.imgfinger.visibility = View.VISIBLE
                     binding.txtFinger.visibility = View.VISIBLE
                 }
+
                 BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
                     binding.txtFinger.text = getString(R.string.biometric_no_hardware)
                 }
+
                 BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
                     Log.e("MY_APP_TAG", "Biometric features are currently unavailable.")
                 }
+
                 BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
                     val enrollIntent = Intent(Settings.ACTION_BIOMETRIC_ENROLL).apply {
                         putExtra(
@@ -120,40 +148,6 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-        
-      
-
-    private fun createNewUser(user:String, password:String){
-        auth.createUserWithEmailAndPassword(user, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d("TAG", "createUserWithEmail:success")
-                    val user = auth.currentUser
-                    Snackbar.make(this, binding.txtInputUser, "createUserWhitEmail: success", Snackbar.LENGTH_SHORT).show()
-                    binding.txtInputUser.text!!.clear()
-                    binding.txtInputPassword.text!!.clear()
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Snackbar.make(this, binding.txtInputUser, "createUserWhitEmail: error", Snackbar.LENGTH_SHORT).show()
-                    Log.d("TAG", task.exception!!.stackTraceToString())
-                }
-            }
-    }
-
-    private fun SingInUsers(email:String, password:String){
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val user=auth.currentUser
-                    startActivity(Intent(this, MainActivity::class.java))
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Snackbar.make(this, binding.txtInputUser, "createUserWhitEmail: error", Snackbar.LENGTH_SHORT).show()
-                    Log.d("TAG", task.exception!!.stackTraceToString())
-                }
-            }
     }
 
 

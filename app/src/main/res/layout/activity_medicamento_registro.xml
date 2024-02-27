@@ -7,6 +7,7 @@
     android:background="@color/fondo2"
     tools:context=".ui.activities.MedicamentosRegistroMapaActivity">
 
+
     <ImageView
         android:id="@+id/img_menu"
         android:layout_width="50dp"
@@ -50,11 +51,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtImputDosis"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="55dp"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="#2DAD99"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,8 +61,6 @@
         android:id="@+id/txtImputIndicaciones"
         android:layout_width="match_parent"
         style="@style/text_input_layout_medicamento_registro"
-        android:hint="Indicaciones"
-
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtImputDosis"
@@ -75,7 +72,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:hint="Indicaciones"
             />
+
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,31 +115,13 @@
             android:id="@+id/edtTextImputFechaInicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusableInTouchMode="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtInputLayoutHoraInicio"
-        android:layout_width="match_parent"
-        style="@style/text_input_layout_medicamento_registro"
-        android:hint="Hora de inicio"
-
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtInputLayoutFechaInicio"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtTextImputHoraInicio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputCaducidad"
@@ -150,7 +131,7 @@
 
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtInputLayoutHoraInicio"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputLayoutFechaInicio"
         >
 
 
@@ -167,15 +148,12 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputObservaciones"
-        android:layout_width="match_parent"
         style="@style/text_input_layout_medicamento_registro"
-        android:hint="Observaciones"
-
+        android:layout_width="match_parent"
         android:layout_marginTop="5dp"
+        android:hint="Observaciones"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtInputCaducidad"
-        >
-
+        app:layout_constraintTop_toBottomOf="@+id/txtInputCaducidad">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -183,12 +161,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/btn_registrar"
         android:layout_width="150dp"
         android:layout_height="50dp"
 
