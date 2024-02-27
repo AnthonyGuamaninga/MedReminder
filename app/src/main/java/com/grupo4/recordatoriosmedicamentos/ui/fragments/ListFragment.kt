@@ -92,6 +92,7 @@ class ListFragment : Fragment() {
         findNavController()
             .navigate(
                 ListFragmentDirections.actionListFragmentToDetailFragment(idDrug = drug.spl_id)
+
             )
     }
 
