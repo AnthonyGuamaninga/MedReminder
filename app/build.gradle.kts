@@ -4,6 +4,7 @@ plugins {
     id("com.google.devtools.ksp")
     id("androidx.navigation.safeargs.kotlin")
     id("com.google.gms.google-services")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -95,5 +96,8 @@ dependencies {
 
     //FireStore
     implementation("com.google.firebase:firebase-firestore")
+    //Maps
+
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
 
 }
