@@ -8,16 +8,16 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.grupo4.recordatoriosmedicamentos.R
-import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.Receta
+import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.MedInfo
 import com.grupo4.recordatoriosmedicamentos.databinding.ItemRecetaBinding
 
 
-class RecetasAdapter() : ListAdapter<Receta, RecetasAdapter.RecetaVH>(DiffUtilRecetaCallBack){
+class RecetasAdapter() : ListAdapter<MedInfo, RecetasAdapter.RecetaVH>(DiffUtilRecetaCallBack){
 
 
     class RecetaVH(view: View) : RecyclerView.ViewHolder(view) {
         private var binding: ItemRecetaBinding = ItemRecetaBinding.bind(view)
-        fun render(item: Receta) {
+        fun render(item: MedInfo) {
             binding.imgDrug.load(R.drawable.logo_ma)
             binding.txtGenericName.text = "Generic Name"
             binding.txtDosis.text = item.dosis + " cada " + item.frecuencia
@@ -38,12 +38,12 @@ class RecetasAdapter() : ListAdapter<Receta, RecetasAdapter.RecetaVH>(DiffUtilRe
     }
 }
 
-private object DiffUtilRecetaCallBack : DiffUtil.ItemCallback<Receta>(){
-    override fun areItemsTheSame(oldItem: Receta, newItem: Receta): Boolean {
+private object DiffUtilRecetaCallBack : DiffUtil.ItemCallback<MedInfo>(){
+    override fun areItemsTheSame(oldItem: MedInfo, newItem: MedInfo): Boolean {
         return (oldItem.id==newItem.id)
     }
 
-    override fun areContentsTheSame(oldItem: Receta, newItem: Receta): Boolean {
+    override fun areContentsTheSame(oldItem: MedInfo, newItem: MedInfo): Boolean {
         return (oldItem==newItem)
     }
 

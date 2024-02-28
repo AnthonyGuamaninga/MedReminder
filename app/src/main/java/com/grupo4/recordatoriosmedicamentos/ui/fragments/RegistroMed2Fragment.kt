@@ -1,29 +1,41 @@
-package com.grupo4.recordatoriosmedicamentos.ui.activities
+package com.grupo4.recordatoriosmedicamentos.ui.fragments
 
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import com.grupo4.recordatoriosmedicamentos.R
-import com.grupo4.recordatoriosmedicamentos.databinding.ActivityMedicamentoRegistroBinding
+import com.grupo4.recordatoriosmedicamentos.databinding.FragmentRegistroMedBinding
 import com.grupo4.recordatoriosmedicamentos.ui.viewModels.MedicamentoRegistroViewModel
 
-class MedicamentoRegistroActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMedicamentoRegistroBinding
+class RegistroMed2Fragment : Fragment() {
+    private lateinit var binding : FragmentRegistroMedBinding
     private val medicamentoRegistroViewModel : MedicamentoRegistroViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityMedicamentoRegistroBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding=
+            FragmentRegistroMedBinding.bind(inflater.inflate(R.layout.fragment_registro_med,container, false))
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initListeners()
         initObservables()
-
     }
 
     private fun initListeners() {
@@ -35,26 +47,21 @@ class MedicamentoRegistroActivity : AppCompatActivity() {
                 binding.edtTextImputFechaInicio.text.toString(),
                 "14:00",
                 binding.edtInputCaducidad.text.toString(),
-                binding.edtImputIndicaciones.text.toString(),
-                binding.edtInputObservaciones.text.toString(),
+                "","",
+                /*binding.edtImputIndicaciones.text.toString(),
+                binding.edtInputObservaciones.text.toString(),*/
                 "5801206-7"
             )
         }
         binding.edtTextImputFechaInicio.setOnClickListener {
             datePicker()
+            hideKeyboard(requireContext(), binding.edtTextImputFechaInicio)
         }
-        binding.edtTextImputFechaInicio.onFocusChangeListener= View.OnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                hideKeyboard(this, binding.edtTextImputFechaInicio) // view es la vista actual
-            }
-        }
-
-
     }
 
     private fun initObservables() {
-        medicamentoRegistroViewModel.receta.observe(this){
-            startActivity(Intent(this, VistaPrincipalActivity::class.java))
+        medicamentoRegistroViewModel.receta.observe(viewLifecycleOwner){
+            //startActivity()
         }
     }
 
@@ -65,7 +72,7 @@ class MedicamentoRegistroActivity : AppCompatActivity() {
         val day = 1
 
         val datePickerDialog = DatePickerDialog(
-            this,
+            requireContext(),
             { view, year1, monthOfYear, dayOfMonth ->
                 val dateChoice = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year1)
                 binding.edtTextImputFechaInicio.setText(dateChoice)
@@ -80,4 +87,5 @@ class MedicamentoRegistroActivity : AppCompatActivity() {
         val inputMethodManager = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
+
 }

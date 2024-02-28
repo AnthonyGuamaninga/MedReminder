@@ -1,17 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.MapsFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.fragments.MapsFragment">
+
+<LinearLayout
+    android:id="@+id/layoutImg"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+
+    android:orientation="horizontal"
+    android:gravity="center"
+
+    android:background="@color/btn1">
+<ImageView
+    android:id="@+id/imgFarmacia"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:paddingEnd="30dp"
+    android:src="@drawable/icon_green_farmacia">
+
+</ImageView>
+    <ImageView
+        android:id="@+id/imgHospital"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:paddingStart="30dp"
+        android:src="@drawable/icon_red_hospital">
+
+    </ImageView>
+
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/btn1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Farmacias"
+            android:paddingEnd="13dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20dp">
+
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hospitales"
+            android:paddingStart="13dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20dp">
+
+
+        </TextView>
+
+    </LinearLayout>
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/map"
-        tools:context=".MapsFragment"
-        android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+        tools:context=".MapsFragment" />
 
 
 </LinearLayout>
