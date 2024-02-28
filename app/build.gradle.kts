@@ -100,4 +100,7 @@ dependencies {
 
     implementation("com.google.android.gms:play-services-maps:18.1.0")
 
+    //Places
+    implementation("com.google.android.libraries.places:places:3.3.0")
+
 }
