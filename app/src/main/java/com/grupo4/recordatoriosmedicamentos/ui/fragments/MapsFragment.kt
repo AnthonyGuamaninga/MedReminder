@@ -94,7 +94,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMyLocationButto
             val strB = StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?")
             strB.append("location=" + lat + "," + lng)
             strB.append("&radius=1000")
-            strB.append("&type=bank")
+            strB.append("&type=hospital")
             strB.append("&sensor=true")
             strB.append("&key=${getString(R.string.maps_api_key)}")
 
