@@ -8,13 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.grupo4.recordatoriosmedicamentos.R
 import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.MedInfo
 import com.grupo4.recordatoriosmedicamentos.databinding.FragmentRecetasBinding
-import com.grupo4.recordatoriosmedicamentos.logic.usercases.network.receta.GetAllRecetaUserCase
 import com.grupo4.recordatoriosmedicamentos.logic.usercases.network.receta.MedicamentosUseCase
 import com.grupo4.recordatoriosmedicamentos.ui.adapter.RecetasAdapter
 import kotlinx.coroutines.Dispatchers

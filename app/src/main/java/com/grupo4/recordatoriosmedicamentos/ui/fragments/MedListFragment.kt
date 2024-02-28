@@ -1,7 +1,6 @@
 package com.grupo4.recordatoriosmedicamentos.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.grupo4.recordatoriosmedicamentos.R
-import com.grupo4.recordatoriosmedicamentos.core.Constants
-import com.grupo4.recordatoriosmedicamentos.databinding.FragmentListBinding
+import com.grupo4.recordatoriosmedicamentos.databinding.FragmentMedListBinding
 import com.grupo4.recordatoriosmedicamentos.logic.entities.FullInfoDrugsLG
 import com.grupo4.recordatoriosmedicamentos.logic.usercases.fda.FdaGetResultDrugsUserCase
 import com.grupo4.recordatoriosmedicamentos.ui.adapter.DrugsAdapterDiffUtil
@@ -21,19 +19,16 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class ListFragment : Fragment() {
-
-    private lateinit var binding: FragmentListBinding
+class MedListFragment : Fragment() {
+    private lateinit var binding: FragmentMedListBinding
     private var usersList : MutableList<FullInfoDrugsLG> = ArrayList()
     private var userDiffAdapter = DrugsAdapterDiffUtil( {selectDrug(it)})
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        binding =
-            FragmentListBinding.bind(inflater.inflate(R.layout.fragment_list, container, false))
+        binding=
+        FragmentMedListBinding.bind(inflater.inflate(R.layout.fragment_med_list, container, false))
         return binding.root
     }
 
@@ -42,7 +37,6 @@ class ListFragment : Fragment() {
 
         initRecyclerView()
     }
-
 
     private fun initRecyclerView(){
         binding.rvUsers.adapter = userDiffAdapter
@@ -91,10 +85,8 @@ class ListFragment : Fragment() {
     private fun selectDrug(drug: FullInfoDrugsLG){
         findNavController()
             .navigate(
-                ListFragmentDirections.actionListFragmentToDetailFragment(idDrug = drug.spl_id)
-
+                MedListFragmentDirections.actionMedListFragmentToDetailFragment2(idDrug = drug.spl_id)
             )
     }
-
 
 }

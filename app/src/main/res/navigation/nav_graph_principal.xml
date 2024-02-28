@@ -8,14 +8,16 @@
     <fragment
         android:id="@+id/recetasFragment"
         android:name="com.grupo4.recordatoriosmedicamentos.ui.fragments.RecetasFragment"
-        android:label="RecetasFragment" />
-    <navigation android:id="@+id/navigation3"
+        android:label="RecetasFragment">
+     </fragment>
+    <navigation
+        android:id="@+id/navigation3"
         app:startDestination="@id/regsitroMed1Fragment">
         <fragment
             android:id="@+id/registroMedFragment"
             android:name="com.grupo4.recordatoriosmedicamentos.ui.fragments.RegistroMed2Fragment"
             android:label="fragment_registro_med"
-            tools:layout="@layout/fragment_registro_med" >
+            tools:layout="@layout/fragment_registro_med">
             <action
                 android:id="@+id/action_registroMedFragment_to_registroMed3Fragment"
                 app:destination="@id/registroMed3Fragment" />
@@ -29,10 +31,38 @@
             android:id="@+id/regsitroMed1Fragment"
             android:name="com.grupo4.recordatoriosmedicamentos.ui.fragments.RegsitroMed1Fragment"
             android:label="fragment_regsitro_med1"
-            tools:layout="@layout/fragment_regsitro_med1" >
+            tools:layout="@layout/fragment_regsitro_med1">
             <action
                 android:id="@+id/action_regsitroMed1Fragment_to_registroMedFragment"
                 app:destination="@id/registroMedFragment" />
         </fragment>
     </navigation>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.grupo4.recordatoriosmedicamentos.ui.fragments.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+    </fragment>
+    <fragment
+        android:id="@+id/medListFragment"
+        android:name="com.grupo4.recordatoriosmedicamentos.ui.fragments.MedListFragment"
+        android:label="fragment_med_list"
+        tools:layout="@layout/fragment_med_list" >
+        <action
+            android:id="@+id/action_medListFragment_to_detailFragment2"
+            app:destination="@id/detailFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment2"
+        android:name="com.grupo4.recordatoriosmedicamentos.ui.fragments.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail">
+    <argument
+        android:name="idDrug"
+        app:argType="string"
+        android:defaultValue="NA" />
+        <action
+            android:id="@+id/action_detailFragment2_to_medListFragment"
+            app:destination="@id/medListFragment" />
+    </fragment>
 </navigation>

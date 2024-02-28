@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.findNavController
 import com.grupo4.recordatoriosmedicamentos.R
 import com.grupo4.recordatoriosmedicamentos.databinding.ActivityVistaprincipalBinding
 
@@ -15,6 +16,8 @@ class VistaPrincipalActivity : AppCompatActivity() {
     private lateinit var binding: ActivityVistaprincipalBinding
     lateinit var  actionBarDrawerToggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityVistaprincipalBinding.inflate(layoutInflater)
@@ -35,16 +38,16 @@ class VistaPrincipalActivity : AppCompatActivity() {
 
     private fun initListeners() {
         binding.btnMedicamentos.setOnClickListener {
-            startActivity(Intent(this@VistaPrincipalActivity, MainActivity::class.java))
+            findNavController(binding.navHostFragment.id).navigate(R.id.medListFragment)
         }
         binding.btmMapas.setOnClickListener {
-            startActivity(Intent(this@VistaPrincipalActivity, MapaActivity::class.java ))
+            findNavController(binding.navHostFragment.id).navigate(R.id.mapsFragment)
         }
         binding.btnRecomendaciones.setOnClickListener {
 
         }
         binding.btnRegistroReceta.setOnClickListener {
-            startActivity(Intent(this@VistaPrincipalActivity,MedicamentoRegistroActivity::class.java))
+            findNavController(binding.navHostFragment.id).navigate(R.id.recetasFragment)
         }
         binding.imgMenu.setOnClickListener{
             binding.myDrawerPrincipal.openDrawer(GravityCompat.START)
