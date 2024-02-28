@@ -8,27 +8,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.grupo4.recordatoriosmedicamentos.R
-import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.Receta
+import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.MedInfo
 import com.grupo4.recordatoriosmedicamentos.databinding.FragmentRecetasBinding
-import com.grupo4.recordatoriosmedicamentos.logic.usercases.fda.FdaGetResultDrugsUserCase
 import com.grupo4.recordatoriosmedicamentos.logic.usercases.network.receta.GetAllRecetaUserCase
+import com.grupo4.recordatoriosmedicamentos.logic.usercases.network.receta.MedicamentosUseCase
 import com.grupo4.recordatoriosmedicamentos.ui.adapter.RecetasAdapter
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class RecetasFragment : Fragment() {
     private lateinit var binding: FragmentRecetasBinding
-    private var recetaList: MutableList<Receta> = ArrayList()
+    private var recetaList: MutableList<MedInfo> = ArrayList()
     private var recetaAdapter = RecetasAdapter()
-    private lateinit var auth: FirebaseAuth
 
 
     override fun onCreateView(
@@ -39,7 +34,6 @@ class RecetasFragment : Fragment() {
         binding=
             FragmentRecetasBinding.bind(inflater.inflate(R.layout.fragment_recetas, container, false))
         return binding.root
-        auth = Firebase.auth
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,7 +57,7 @@ class RecetasFragment : Fragment() {
 
     private fun loadDataRecyclerView(){
         lifecycleScope.launch (Dispatchers.Main) {
-            var rec = GetAllRecetaUserCase().invoke()
+            var rec = MedicamentosUseCase().getAll()
             if (rec != null) {
                 insertReceta(rec)
             }else{
@@ -72,8 +66,8 @@ class RecetasFragment : Fragment() {
         }
     }
 
-    private fun insertReceta(receta: List<Receta>){
-        recetaList.addAll(receta)
+    private fun insertReceta(medInfo: List<MedInfo>){
+        recetaList.addAll(medInfo)
         recetaAdapter.submitList(recetaList.toList())
 
     }
