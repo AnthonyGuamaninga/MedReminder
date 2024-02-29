@@ -13,16 +13,15 @@
 
        <TextView
            android:id="@+id/registra_tu_medicina"
-           android:layout_width="302.8dp"
-           android:layout_height="42.8dp"
-           android:layout_marginTop="100dp"
+           android:layout_width="419dp"
+           android:layout_height="47dp"
+           android:layout_marginTop="68dp"
            android:gravity="center"
            android:text="Registro nuevo medicamento"
            android:textColor="@color/registra_tu_medicina_color"
            android:textSize="28sp"
            android:textStyle="bold"
            app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="0.481"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,17 +47,18 @@
            android:gravity="center"
            android:hint="Ejm: Ibuprofeno, paracetamol, etc."
            android:textColorHint="@color/gray_am"
-           android:textColor="@color/buscar____color"
+           android:textColor="@color/white"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintHorizontal_bias="0.495"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintTop_toBottomOf="@+id/ingrese_el_nombre_del_medicamento_que_desea_agregar" />
 
        <Button
+           android:id="@+id/btnSiguiente"
            android:layout_width="150dp"
            android:layout_height="50dp"
 
-           android:backgroundTint="@color/fondo1_cyan"
+           android:backgroundTint="@color/dark_green"
 
            android:text="Siguiente"
            app:layout_constraintBottom_toBottomOf="parent"

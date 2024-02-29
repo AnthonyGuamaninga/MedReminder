@@ -4,7 +4,7 @@ import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.UserD
 import com.grupo4.recordatoriosmedicamentos.data.network.repository.firestore.UserRepository
 
 class SaveUserInDBUserCase {
-    suspend fun invoke(id:String, email: String, name: String): UserDB?{
-        return UserRepository().saveUserDB(id, email, name).getOrNull()
+    suspend fun invoke(id:String, email: String, name: String, lastname: String, edad:Int): UserDB?{
+        return UserRepository().saveUserDB(id, email, name, lastname, edad).getOrNull()
     }
 }

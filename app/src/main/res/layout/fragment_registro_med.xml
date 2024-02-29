@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp">
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -124,7 +125,7 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
 
-            android:backgroundTint="@color/fondo1_cyan"
+            android:backgroundTint="@color/dark_green"
             android:text="Siguiente"
 
             app:layout_constraintBottom_toBottomOf="parent"

@@ -26,9 +26,9 @@ class RegistroActivity : AppCompatActivity() {
 
     fun initListeners() {
         binding.btnRegistrar.setOnClickListener {
-            var correo=binding.txtCorreo.text.toString()
-            var contra=binding.txtPassword.text.toString()
-            var nombre=binding.txtNombre.text.toString()
+            var correo=binding.edtInputEmail.toString()
+            var contra=binding.edtInputPassword.text.toString()
+            var nombre=binding.edtInputName.text.toString()
 
             if(correo.isBlank()||contra.isBlank()||nombre.isBlank()){
                 dialog =
@@ -39,9 +39,11 @@ class RegistroActivity : AppCompatActivity() {
                 dialog.show()
             }else{
                 registroViewModel.createUser(
-                    binding.txtCorreo.text.toString(),
-                    binding.txtPassword.text.toString(),
-                    binding.txtNombre.text.toString()
+                    binding.edtInputEmail.text.toString(),
+                    binding.edtInputPassword.text.toString(),
+                    binding.edtInputName.text.toString(),
+                    binding.edtInputLastName.text.toString(),
+                    binding.edtInputEdad.text.toString().toInt()
                 )
             }
 
@@ -56,7 +58,7 @@ class RegistroActivity : AppCompatActivity() {
         registroViewModel.error.observe(this) {
             Snackbar.make(
                 this,
-                binding.txtCorreo,
+                binding.edtInputEmail,
                 "createUserWhitEmail: error",
                 Snackbar.LENGTH_SHORT
             ).show()

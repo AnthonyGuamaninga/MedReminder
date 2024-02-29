@@ -5,6 +5,6 @@ import com.grupo4.recordatoriosmedicamentos.data.network.repository.firestore.Us
 
 class GetUserByIdUserCase {
     suspend fun invoke(id:String):UserDB?{
-        return UserRepository().getUserByID(id).getOrNull()
+        return UserRepository().getUserByID(id)
     }
 }

@@ -21,6 +21,8 @@
             <action
                 android:id="@+id/action_registroMedFragment_to_registroMed3Fragment"
                 app:destination="@id/registroMed3Fragment" />
+            <argument
+                android:name="medInfo" />
         </fragment>
         <fragment
             android:id="@+id/registroMed3Fragment"
@@ -36,6 +38,7 @@
                 android:id="@+id/action_regsitroMed1Fragment_to_registroMedFragment"
                 app:destination="@id/registroMedFragment" />
         </fragment>
+        <argument android:name="userInfo" />
     </navigation>
     <fragment
         android:id="@+id/mapsFragment"
@@ -64,5 +67,26 @@
         <action
             android:id="@+id/action_detailFragment2_to_medListFragment"
             app:destination="@id/medListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/misRecetasFragment"
+        android:name="com.grupo4.recordatoriosmedicamentos.ui.fragments.MisRecetasFragment"
+        android:label="fragment_mis_recetas"
+        tools:layout="@layout/fragment_mis_recetas" >
+        <argument android:name="userInfo" />
+        <action
+            android:id="@+id/action_misRecetasFragment_to_nuevaRecetaFragment"
+            app:destination="@id/nuevaRecetaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nuevaRecetaFragment"
+        android:name="com.grupo4.recordatoriosmedicamentos.ui.fragments.NuevaRecetaFragment"
+        android:label="fragment_nueva_receta"
+        tools:layout="@layout/fragment_nueva_receta" >
+        <action
+            android:id="@+id/action_nuevaRecetaFragment_to_navigation3"
+            app:destination="@id/navigation3" />
+        <argument android:name="userInfo"
+            app:argType="string" />
     </fragment>
 </navigation>

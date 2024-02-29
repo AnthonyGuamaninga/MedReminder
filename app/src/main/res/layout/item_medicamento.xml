@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -25,10 +26,9 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_margin="10dp"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -49,7 +49,7 @@
                 android:textColor="@color/white"/>
 
             <TextView
-                android:id="@+id/txtRoute"
+                android:id="@+id/txtDosis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -58,17 +58,35 @@
                 tools:text="Ruta de consumo"
                 android:textColor="@color/white"/>
 
-            <Button
-                android:id="@+id/btnInformacion"
+            <TextView
+                android:id="@+id/txtIndicaciones"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:textSize="18dp"
-                android:backgroundTint="@color/light_green"
-                android:text="Detalles"/>
+                android:layout_marginTop="5dp"
+
+                android:textSize="16sp"
+                tools:text="Ruta de consumo"
+                android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/txtCaducidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+
+                android:textSize="16sp"
+                tools:text="Ruta de consumo"
+                android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/txtObservaciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+
+                android:textSize="16sp"
+                tools:text="Ruta de consumo"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
-

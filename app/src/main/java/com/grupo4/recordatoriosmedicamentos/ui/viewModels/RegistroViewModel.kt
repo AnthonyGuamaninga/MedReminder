@@ -15,11 +15,11 @@ class RegistroViewModel : ViewModel() {
     val error get() = _error
     private val _error = MutableLiveData<String>()
 
-    fun createUser(email: String, password: String, name: String) {
+    fun createUser(email: String, password: String, name: String, lastname:String, edad:Int) {
         viewModelScope.launch(Dispatchers.IO) {
             val us = createUserCase().invoke(email, password,name)
             if (us != null) {
-                val newUs= SaveUserInDBUserCase().invoke(us.id,us.email,us.name)
+                val newUs= SaveUserInDBUserCase().invoke(us.id,us.email,name,lastname,edad)
                 _user.postValue(newUs!!)
             } else {
                 _error.postValue("Ocurrio un error")

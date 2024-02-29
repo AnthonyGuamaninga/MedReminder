@@ -2,6 +2,7 @@ package com.grupo4.recordatoriosmedicamentos.ui.fragments
 
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ import androidx.fragment.app.viewModels
 import com.grupo4.recordatoriosmedicamentos.R
 import com.grupo4.recordatoriosmedicamentos.databinding.FragmentRegistroMedBinding
 import com.grupo4.recordatoriosmedicamentos.ui.viewModels.MedicamentoRegistroViewModel
+import java.time.LocalDateTime
 
 
 class RegistroMed2Fragment : Fragment() {
@@ -55,7 +57,11 @@ class RegistroMed2Fragment : Fragment() {
         }
         binding.edtTextImputFechaInicio.setOnClickListener {
             datePicker()
-            hideKeyboard(requireContext(), binding.edtTextImputFechaInicio)
+            hideKeyboard(requireContext(), binding.txtInputLayoutFechaInicio)
+        }
+        binding.edtTextImputHoraInicio.setOnClickListener{
+            timePicker()
+            hideKeyboard(requireContext(), binding.txtInputLayoutHoraInicio)
         }
     }
 
@@ -66,20 +72,29 @@ class RegistroMed2Fragment : Fragment() {
     }
 
     private fun datePicker(){
-        // Valores por defecto del DatePicker
-        val year = 2000
-        val month = 0
-        val day = 1
-
+        val fecha= LocalDateTime.now()
         val datePickerDialog = DatePickerDialog(
             requireContext(),
             { view, year1, monthOfYear, dayOfMonth ->
                 val dateChoice = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year1)
                 binding.edtTextImputFechaInicio.setText(dateChoice)
                 //temp = dateChoice
-            }, year, month, day
+            }, fecha.year, fecha.monthValue, fecha.dayOfYear
         )
         datePickerDialog.show()
+    }
+
+    private fun timePicker(){
+        val hora=12
+        val minutos=0
+        val timePicker = TimePickerDialog(
+            requireContext(),
+            {view, hour,minunte ->
+                val timeChoice = (hour.toString()+":"+minutos)
+                binding.edtTextImputHoraInicio.setText(timeChoice)
+            }, hora,minutos,false
+        )
+        timePicker.show()
     }
 
 

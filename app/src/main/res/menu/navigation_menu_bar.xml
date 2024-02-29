@@ -5,10 +5,43 @@
     >
 
     <item
-        android:title="Home"
-        android:id="@+id/home_nav_menu"/>
-    <item
-        android:title="Profile"
-        android:id="@+id/profile_nav_menu"/>
+        android:id="@+id/main_item"
+        android:title="MENÚ"
+
+        >
+        <menu>
+            <item
+                android:id="@+id/it_home"
+                android:enabled="true"
+                android:icon="@drawable/icon_baseline_add_home_24_white"
+                android:title="Home"
+
+                />
+            <item
+                android:id="@+id/it_perfil"
+                android:enabled="true"
+                android:icon="@drawable/icon_profile"
+                android:title="Perfil"/>
+
+            <item
+                android:id="@+id/it_medicamento"
+                android:enabled="true"
+                android:icon="@drawable/icon_pills"
+                android:title="Medicamentos"/>
+
+            <item
+                android:id="@+id/it_ayuda"
+                android:enabled="true"
+                android:icon="@drawable/icon_help"
+                android:title="Ayuda"/>
+
+            <item
+                android:id="@+id/it_cerar_sesion"
+                android:enabled="true"
+                android:icon="@drawable/icon_logout"
+                android:title="Cerrar sesión"/>
+
+        </menu>
+    </item>
 
 </menu>
