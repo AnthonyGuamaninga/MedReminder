@@ -57,10 +57,10 @@ class MedListFragment : Fragment() {
             val resp = withContext(Dispatchers.IO){
                 FdaGetResultDrugsUserCase().invoke()
             }
-            resp.onSuccess {listAnime ->
+            resp.onSuccess {listDrug ->
                 //usersList.addAll(listAnime)
                 //insertUsersDiff(usersList)
-                insertUsersDiff(listAnime)
+                insertDrugsDiff(listDrug)
             }
             resp.onFailure {ex ->
                 Snackbar.make(
@@ -76,8 +76,8 @@ class MedListFragment : Fragment() {
         }
     }
 
-    private fun insertUsersDiff(animes: List<FullInfoDrugsLG>){
-        usersList.addAll(animes)
+    private fun insertDrugsDiff(drugs: List<FullInfoDrugsLG>){
+        usersList.addAll(drugs)
         userDiffAdapter.submitList(usersList.toList())
 
     }
