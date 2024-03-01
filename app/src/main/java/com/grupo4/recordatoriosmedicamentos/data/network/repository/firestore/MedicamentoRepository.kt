@@ -21,17 +21,9 @@ class MedicamentoRepository {
         observaciones: String,
         medId: String
     ): Result<MedInfo> = runCatching {
-        var lista = getMediAll().getOrNull()?.documents
-        var id: String = ""
-        if (lista!=null){
-            id= idReceta+"Med"+lista.size.toString()
-        }else{
-            id=idReceta+"Med0"
-        }
-
         val med =
-            MedInfo(id, dosis, frecuencia, f_inicio, hora_inicio, caducidad, indicaciones, observaciones, medId)
-        db.collection("Medicamentos").add(med).await()
+            MedInfo(idReceta, dosis, frecuencia, f_inicio, hora_inicio, caducidad, indicaciones, observaciones, medId)
+        db.collection("Medicamentos").document(idReceta).set(med).await()
         return@runCatching med
     }
 

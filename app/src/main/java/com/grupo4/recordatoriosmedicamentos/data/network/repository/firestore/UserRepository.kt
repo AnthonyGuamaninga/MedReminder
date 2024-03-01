@@ -2,6 +2,7 @@ package com.grupo4.recordatoriosmedicamentos.data.network.repository.firestore
 
 import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.dataObjects
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.toObject
 import com.google.firebase.ktx.Firebase
@@ -14,17 +15,26 @@ class UserRepository {
 
     suspend fun saveUserDB(id: String, email:String, name: String, lastname:String, edad:Int):Result<UserDB> =runCatching{
         val us= UserDB(id, email,name,lastname, edad, null)
-        db.collection("Users").add(us).await()
+        db.collection("Users").document(id).set(us).await()
         return@runCatching us
+    }
+    suspend fun updateUserDB(userDB: UserDB):Result<UserDB> =runCatching{
+        db.collection("Users").document(userDB.id).set(userDB).await()
+        return@runCatching userDB
     }
 
     suspend fun getDocUserByID(id:String)= runCatching{
-        val us= UserDB(id, "")
-        Log.d("UCE12",us.id)
-        return@runCatching db.collection("Users")
-            .document(us.id)
+        val user = db.collection("Users")
+            //.whereEqualTo("id",id).dataObjects<UserDB>()
+            .document(id)
             .get()
             .await()
+        Log.d("UserRepo",user.toString())
+        return@runCatching user /*db.collection("Users")
+            //.whereEqualTo("id",id).dataObjects<UserDB>()
+            .document(id)
+            .get()
+            .await()*/
     }
 
     suspend fun getUserByID(id:String): UserDB? {
