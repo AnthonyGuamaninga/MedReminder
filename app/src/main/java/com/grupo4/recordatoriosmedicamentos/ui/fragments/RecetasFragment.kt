@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.grupo4.recordatoriosmedicamentos.R
 import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.MedInfo
 import com.grupo4.recordatoriosmedicamentos.databinding.FragmentRecetasBinding
@@ -20,7 +23,7 @@ class RecetasFragment : Fragment() {
     private lateinit var binding: FragmentRecetasBinding
     private var recetaList: MutableList<MedInfo> = ArrayList()
     private var recetaAdapter = MedicamentoAdapter()
-
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,9 +37,8 @@ class RecetasFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-            initRecyclerView()
-
-
+        initRecyclerView()
+        auth = Firebase.auth
     }
 
     private fun initRecyclerView(){
@@ -53,7 +55,7 @@ class RecetasFragment : Fragment() {
 
     private fun loadDataRecyclerView(){
         lifecycleScope.launch (Dispatchers.Main) {
-            var rec = MedicamentosUseCase().getAll()
+            var rec = MedicamentosUseCase().getAllId(auth.currentUser?.uid.toString())
             if (rec != null) {
                 insertReceta(rec)
             }else{

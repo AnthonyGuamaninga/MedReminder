@@ -18,8 +18,8 @@ class MedicamentoAdapter() : ListAdapter<MedInfo, MedicamentoAdapter.RecetaVH>(D
     class RecetaVH(view: View) : RecyclerView.ViewHolder(view) {
         private var binding: ItemMedicamentoBinding = ItemMedicamentoBinding.bind(view)
         fun render(item: MedInfo) {
-            binding.imgDrug.load(R.drawable.logo_ma)
-            binding.txtGenericName.text = "Generic Name"
+            binding.imgDrug.load(R.drawable.m_oral)
+            binding.txtGenericName.text = item.medId
             binding.txtDosis.text = item.dosis + " cada " + item.frecuencia
             binding.txtCaducidad.text = item.caducidad
             binding.txtIndicaciones.text = item.indicaciones

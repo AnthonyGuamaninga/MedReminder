@@ -23,7 +23,14 @@ class RecetaAdapter : ListAdapter<Receta, RecetaAdapter.RecetaVH>(DiffUtilReceta
             }
             binding.txtRecetaEstado.text = binding.txtRecetaEstado.text.toString() + estado
             binding.txtRecetaFecha.text = binding.txtRecetaFecha.text.toString() + item.fecha_Registro
-            binding.txtRecetaListaM.text = item.medicamentos.toString()
+            binding.txtRecetaListaM.text = mostrarLista(item.medicamentos)
+        }
+        fun mostrarLista(lista: List<String>?):String{
+            var res =""
+            for(item in lista!!){
+                res=res+"- "+item+"\n"
+            }
+            return res
         }
     }
 
@@ -35,6 +42,7 @@ class RecetaAdapter : ListAdapter<Receta, RecetaAdapter.RecetaVH>(DiffUtilReceta
     override fun onBindViewHolder(holder: RecetaVH, position: Int) {
         holder.render(getItem(position))
     }
+
 
 
 }

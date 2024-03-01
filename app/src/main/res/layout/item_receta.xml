@@ -9,7 +9,7 @@
     android:clickable="true"
     android:focusable="true"
     tools:ignore="MissingConstraints"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="30dp"
     app:cardElevation="10dp"
     app:cardUseCompatPadding="true"
 
@@ -18,26 +18,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/txtRecetaNum"
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_marginStart="24dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:text="Receta: "
-            android:textColor="@color/gray_am"
-            android:textSize="20sp" />
+            android:text="RECETA"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/txtRecetaEstado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Estado: "
-            android:textColor="@color/gray_am"
+            android:textColor="@color/white"
+            android:textStyle="bold|italic"
             android:textSize="20sp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginBottom="10dp"/>
 
         <TextView
@@ -45,19 +47,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Fecha Registro: "
-            android:textColor="@color/gray_am"
+            android:textColor="@color/white"
             android:textSize="20sp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginBottom="10dp"/>
 
         <TextView
             android:id="@+id/txtRecetaMedic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mediacamentos: "
-            android:textColor="@color/gray_am"
+            android:text="Medicamentos: "
+            android:textColor="@color/white"
             android:textSize="20sp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginBottom="10dp"/>
 
         <TextView
@@ -65,9 +67,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Listado"
-            android:textColor="@color/gray_am"
-            android:textSize="17sp"
-            android:layout_marginLeft="50dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginLeft="18dp"
             android:layout_marginBottom="10dp"/>
 
 

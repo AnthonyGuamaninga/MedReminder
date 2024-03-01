@@ -13,38 +13,14 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtInputCantidad"
-            style="@style/text_input_layout_medicamento_registro"
-            android:layout_width="200dp"
-            android:textColorHint="@color/gray_am"
-            app:boxStrokeColor="@color/light_green"
-            app:hintTextColor="@color/light_green"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtImputCantidad"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="@style/theme_registro_med"
-                android:layout_margin="7dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:inputType="numberDecimal"
-                android:hint="Cantidad"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtImputDosis"
             style="@style/text_input_layout_medicamento_registro"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:textColorHint="@color/gray_am"
             app:boxStrokeColor="@color/light_green"
             app:hintTextColor="@color/light_green"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/txtInputCantidad"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -54,7 +30,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:hint="Dosis"
-                android:inputType="numberDecimal"
+                android:inputType="text"
+                android:imeOptions="actionNext"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,7 +47,7 @@
             app:boxStrokeColor="@color/light_green"
             app:hintTextColor="@color/light_green"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtInputCantidad">
+            app:layout_constraintTop_toBottomOf="@+id/txtImputDosis">
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -80,6 +57,7 @@
                 style="@style/theme_registro_med"
                 android:layout_margin="7dp"
                 android:hint="Frecuencia"
+                android:imeOptions="actionNext"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -154,6 +132,7 @@
                 style="@style/theme_registro_med"
                 android:layout_margin="7dp"
                 android:hint="Caducidad"
+                android:imeOptions="actionDone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
@@ -166,7 +145,7 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
 
-            android:backgroundTint="@color/dark_green"
+            android:backgroundTint="@color/light_green"
             android:text="Siguiente"
 
             app:layout_constraintBottom_toBottomOf="parent"

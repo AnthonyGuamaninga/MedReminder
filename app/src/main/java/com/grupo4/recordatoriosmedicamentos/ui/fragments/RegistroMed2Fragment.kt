@@ -1,7 +1,9 @@
 package com.grupo4.recordatoriosmedicamentos.ui.fragments
 
 import android.app.Activity
+import android.app.AlarmManager
 import android.app.DatePickerDialog
+import android.app.PendingIntent
 import android.app.TimePickerDialog
 import android.content.Context
 import android.os.Bundle
@@ -13,11 +15,14 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import com.grupo4.recordatoriosmedicamentos.R
 import com.grupo4.recordatoriosmedicamentos.databinding.FragmentRegistroMedBinding
 import com.grupo4.recordatoriosmedicamentos.logic.entities.RecetaSingleton
 import com.grupo4.recordatoriosmedicamentos.ui.viewModels.MedicamentoRegistroViewModel
 import java.time.LocalDateTime
+import java.util.Calendar
 
 
 class RegistroMed2Fragment : Fragment() {
@@ -25,6 +30,10 @@ class RegistroMed2Fragment : Fragment() {
     private val medicamentoRegistroViewModel : MedicamentoRegistroViewModel by viewModels()
     private val fecha= LocalDateTime.now()
     private val recetaSingleton=RecetaSingleton.instance
+    private lateinit var picker: MaterialTimePicker
+    private lateinit var calendar: Calendar
+    private lateinit var alarmManager: AlarmManager
+    private lateinit var pendingIntent: PendingIntent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

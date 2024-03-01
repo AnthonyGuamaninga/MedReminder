@@ -57,10 +57,10 @@ class RegsitroMed1Fragment : Fragment() {
         binding.btnSiguiente.setOnClickListener {
 
             val ultimo=recetaSingleton.listaMed.size
-            recetaSingleton.temporal.medId=binding.registrarMedicina.text.toString()
+            recetaSingleton.temporal.medId=binding.autoCompletetxt.text.toString()
             findNavController().navigate(
                 RegsitroMed1FragmentDirections.actionRegsitroMed1FragmentToRegistroMedFragment(
-                    medInfo = binding.registrarMedicina.text.toString()
+                    medInfo = binding.autoCompletetxt.text.toString()
                 )
             )
         }
