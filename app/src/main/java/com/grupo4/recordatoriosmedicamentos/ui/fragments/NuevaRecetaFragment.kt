@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.grupo4.recordatoriosmedicamentos.R
 import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.MedInfo
+import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.MedTemp
 import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.UserDB
 import com.grupo4.recordatoriosmedicamentos.databinding.FragmentNuevaRecetaBinding
 import com.grupo4.recordatoriosmedicamentos.logic.entities.RecetaSingleton
@@ -66,9 +67,10 @@ class NuevaRecetaFragment : Fragment() {
                     idReceta=args.userInfo+"-"+size
                 }
                 recetaVM.nuevaReceta(idReceta,true,recetaVM.obtenerListIdMed(recetaSingleton.listaMed),args.userInfo,fecha.toString())
+                Log.d("Medi", recetaSingleton.listaMed.toString())
+                recetaVM.guardarMed(recetaSingleton.listaMed)
                 val temp=recetaVM.getUser(args.userInfo)
                 if(temp!=null){
-                    Log.d("User","temp no es null")
                     val lista : MutableList<String> = ArrayList()
                     lista.addAll(temp.recetasId!!)
                     lista.add(idReceta)
@@ -80,11 +82,21 @@ class NuevaRecetaFragment : Fragment() {
             findNavController().navigate(
                 NuevaRecetaFragmentDirections.actionNuevaRecetaFragmentToMisRecetasFragment(userInfo = "")
             )
+            /*recetaSingleton.temporal= MedTemp()
+            recetaSingleton.listaMed=ArrayList()*/
         }
 
         binding.buttonAdd.setOnClickListener {
-
-            recetaSingleton.temporal.id=args.userInfo.toString()+"-x"
+            lifecycleScope.launch(Dispatchers.IO) {
+                val size = recetaVM.getUser(args.userInfo)?.recetasId?.size
+                var idReceta: String
+                if (size == null) {
+                    idReceta = args.userInfo + "-0"
+                } else {
+                    idReceta = args.userInfo + "-" + size
+                }
+                recetaSingleton.temporal.id=idReceta
+            }
             findNavController().navigate(
                 NuevaRecetaFragmentDirections.actionNuevaRecetaFragmentToNavigation3(userInfo = args.userInfo)
             )

@@ -35,6 +35,13 @@ class MedicamentoRepository {
             .await<DocumentSnapshot?>()?.toObject<MedInfo>(MedInfo::class.java)
     }
 
+    suspend fun getAllMediByID(id: String) = runCatching {
+        val med = MedInfo(id)
+        return@runCatching db.collection("Medicamentos")
+            .whereGreaterThanOrEqualTo("id", id).whereLessThanOrEqualTo("id", id + "\uf8ff").get()
+            .await().documents
+    }
+
     suspend fun getMediAll() = runCatching {
         return@runCatching db.collection("Medicamentos")
             .get().await()

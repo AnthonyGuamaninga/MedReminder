@@ -16,6 +16,7 @@ import com.google.firebase.ktx.Firebase
 import com.grupo4.recordatoriosmedicamentos.R
 import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.Receta
 import com.grupo4.recordatoriosmedicamentos.databinding.FragmentMisRecetasBinding
+import com.grupo4.recordatoriosmedicamentos.logic.usercases.network.receta.MedicamentosUseCase
 import com.grupo4.recordatoriosmedicamentos.logic.usercases.network.receta.RecetaUseCase
 import com.grupo4.recordatoriosmedicamentos.ui.adapter.RecetaAdapter
 import kotlinx.coroutines.Dispatchers
@@ -41,6 +42,9 @@ class MisRecetasFragment : Fragment() {
         auth = Firebase.auth
         initRecyclerView()
         initlisteners()
+        lifecycleScope.launch (Dispatchers.IO){
+            RecetaUseCase().getAllId("DF05LmH9xHh8ewH1Hr5CHkUy2u62-")
+        }
     }
 
     private fun initlisteners() {
@@ -69,9 +73,9 @@ class MisRecetasFragment : Fragment() {
 
     private fun loadDataRecyclerView(){
         lifecycleScope.launch (Dispatchers.Main) {
-            var rec = RecetaUseCase().getAll()
+            var rec = RecetaUseCase().getAllId(auth.currentUser?.uid.toString())
             if (rec != null) {
-                insertReceta(rec)
+                insertReceta(convertirId(rec))
             }else{
                 Log.d("uce", rec?.toString().toString())
             }
@@ -82,6 +86,23 @@ class MisRecetasFragment : Fragment() {
         recetaList.addAll(receta)
         recetaAdapter.submitList(recetaList.toList())
 
+    }
+
+    suspend fun convertirId(recetas: List<Receta>):List<Receta>{
+        var res : MutableList<Receta> = ArrayList()
+
+        for (old in recetas){
+            var med =MedicamentosUseCase().getAllId(old.id)
+            var nombres : MutableList<String> = ArrayList()
+            if (med != null) {
+                for( m in med){
+                    nombres.add(m.medId!!)
+                }
+            }
+            val receta = Receta(old.id,old.estado,nombres.toList(),old.idUser,old.fecha_Registro)
+            res.add(receta)
+        }
+        return res
     }
 
 }

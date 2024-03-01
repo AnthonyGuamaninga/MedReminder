@@ -16,15 +16,21 @@
             style="@style/text_input_layout_medicamento_registro"
             android:layout_width="match_parent"
             android:layout_marginTop="40dp"
-            android:hint="Indicaciones"
+            android:textColorHint="@color/gray_am"
+            app:boxStrokeColor="@color/light_green"
+            app:hintTextColor="@color/light_green"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtImputDosis"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:inputType="number"
+                android:layout_height="80dp"
+                android:inputType="text"
+                style="@style/theme_registro_med"
+                android:layout_margin="7dp"
+                android:hint="Indicaciones"
+                android:imeOptions="actionNext"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,8 +40,10 @@
             android:id="@+id/txtInputObservaciones"
             style="@style/text_input_layout_medicamento_registro"
             android:layout_width="match_parent"
-            android:layout_marginTop="12dp"
-            android:hint="Observaciones"
+            android:layout_marginTop="7dp"
+            android:textColorHint="@color/gray_am"
+            app:boxStrokeColor="@color/light_green"
+            app:hintTextColor="@color/light_green"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtImputDosis">
 
@@ -43,7 +51,11 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtInputObservaciones"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
+                style="@style/theme_registro_med"
+                android:layout_margin="7dp"
+                android:hint="Observaciones"
+                android:imeOptions="actionDone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,7 +66,7 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
 
-            android:backgroundTint="@color/fondo1_cyan"
+            android:backgroundTint="@color/light_green"
             android:text="Agregar"
 
             app:layout_constraintBottom_toBottomOf="parent"

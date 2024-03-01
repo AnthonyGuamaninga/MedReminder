@@ -1,18 +1,15 @@
 package com.grupo4.recordatoriosmedicamentos.ui.viewModels
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.android.gms.tasks.Tasks.await
 import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.MedInfo
 import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.Receta
 import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.UserDB
+import com.grupo4.recordatoriosmedicamentos.logic.usercases.network.receta.MedicamentosUseCase
 import com.grupo4.recordatoriosmedicamentos.logic.usercases.network.receta.RecetaUseCase
 import com.grupo4.recordatoriosmedicamentos.logic.usercases.network.user.UserUseCase
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.ArrayList
 
 class RecetaRegistroViewModel : ViewModel() {
 
@@ -35,22 +32,39 @@ class RecetaRegistroViewModel : ViewModel() {
         }
     }
 
-    fun updateUser(userDB: UserDB){
+    fun updateUser(userDB: UserDB) {
         viewModelScope.launch {
             UserUseCase().update(userDB)
         }
     }
 
     suspend fun getUser(idUser: String): UserDB? {
-       return  UserUseCase().getById(idUser)
+        return UserUseCase().getById(idUser)
     }
 
-    fun obtenerListIdMed(lista : MutableList<MedInfo>):List<String>?{
+    fun obtenerListIdMed(lista: MutableList<MedInfo>): List<String>? {
         var res = ArrayList<String>()
-        for (obj in lista){
+        for (obj in lista) {
             res.add(obj.id)
         }
         return res.toList()
+    }
+
+    suspend fun guardarMed(list: MutableList<MedInfo>) {
+
+            for (medi in list) {
+                MedicamentosUseCase().Save(
+                    medi.id,
+                    medi.dosis!!,
+                    medi.frecuencia!!,
+                    medi.f_inicio!!,
+                    medi.hora_inicio!!,
+                    medi.caducidad!!,
+                    medi.indicaciones!!,
+                    medi.observaciones!!,
+                    medi.medId!!
+                )
+            }
     }
 
 }

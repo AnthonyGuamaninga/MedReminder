@@ -37,4 +37,15 @@ class MedicamentosUseCase {
     suspend fun getAll(): List<MedInfo>? {
         return MedicamentoRepository().getAllMedi()
     }
+
+    suspend fun getAllId(id: String):List<MedInfo>?{
+        val list = MedicamentoRepository().getAllMediByID(id).getOrNull()
+        var listado : MutableList<MedInfo> = ArrayList()
+        if(list!=null){
+            for(doc in list){
+                listado.add(doc.toObject<MedInfo>(MedInfo::class.java)!!)
+            }
+        }
+        return listado.toList()
+    }
 }
