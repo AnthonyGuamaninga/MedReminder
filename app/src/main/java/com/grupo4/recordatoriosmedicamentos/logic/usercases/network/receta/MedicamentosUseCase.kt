@@ -35,7 +35,6 @@ class MedicamentosUseCase {
     }
 
     suspend fun getAll(): List<MedInfo>? {
-        Log.d("UCE",MedicamentoRepository().getAllMedi()!!.size.toString())
         return MedicamentoRepository().getAllMedi()
     }
 }

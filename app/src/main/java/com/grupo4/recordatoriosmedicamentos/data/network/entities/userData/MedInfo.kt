@@ -1,7 +1,7 @@
 package com.grupo4.recordatoriosmedicamentos.data.network.entities.userData
 
 data class MedInfo(
-    var id:String,
+    val id:String,
     val dosis:String?=null,
     val frecuencia:String?=null,
     val f_inicio:String?=null,

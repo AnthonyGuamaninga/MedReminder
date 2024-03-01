@@ -13,14 +13,16 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.grupo4.recordatoriosmedicamentos.R
 import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.MedInfo
-import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.Receta
+import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.UserDB
 import com.grupo4.recordatoriosmedicamentos.databinding.FragmentNuevaRecetaBinding
-import com.grupo4.recordatoriosmedicamentos.logic.usercases.network.receta.MedicamentosUseCase
-import com.grupo4.recordatoriosmedicamentos.logic.usercases.network.user.GetUserByIdUserCase
+import com.grupo4.recordatoriosmedicamentos.logic.entities.RecetaSingleton
 import com.grupo4.recordatoriosmedicamentos.ui.adapter.MedicamentoAdapter
 import com.grupo4.recordatoriosmedicamentos.ui.viewModels.RecetaRegistroViewModel
+import com.squareup.okhttp.Dispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import kotlin.math.log
 
 class NuevaRecetaFragment : Fragment() {
 
@@ -28,7 +30,8 @@ class NuevaRecetaFragment : Fragment() {
     private val recetaVM : RecetaRegistroViewModel by viewModels()
     private val args : NuevaRecetaFragmentArgs by navArgs()
     private var recetaAdapter = MedicamentoAdapter()
-    private var recetaList: MutableList<MedInfo> = ArrayList()
+    private val recetaSingleton= RecetaSingleton.instance
+    private val fecha= LocalDateTime.now()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,22 +51,47 @@ class NuevaRecetaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         inintListeners()
         initRecyclerView()
+
+
     }
 
     private fun inintListeners() {
         binding.buttonSave.setOnClickListener {
-            var user = recetaVM.getUser(args.userInfo)
-            if (user != null) {
-                recetaVM.nuevaReceta("User1Receta",true,null,user.id,"")
+            lifecycleScope.launch(Dispatchers.IO){
+                val size= recetaVM.getUser(args.userInfo)?.recetasId?.size
+                var idReceta:String
+                if(size==null){
+                    idReceta=args.userInfo+"-0"
+                }else{
+                    idReceta=args.userInfo+"-"+size
+                }
+                recetaVM.nuevaReceta(idReceta,true,recetaVM.obtenerListIdMed(recetaSingleton.listaMed),args.userInfo,fecha.toString())
+                val temp=recetaVM.getUser(args.userInfo)
+                if(temp!=null){
+                    Log.d("User","temp no es null")
+                    val lista : MutableList<String> = ArrayList()
+                    lista.addAll(temp.recetasId!!)
+                    lista.add(idReceta)
+                    val user = UserDB(temp.id,temp.email,temp.name,temp.lastname,temp.edad,lista.toList())
+                    recetaVM.updateUser(user)
+                }
             }
+
+            findNavController().navigate(
+                NuevaRecetaFragmentDirections.actionNuevaRecetaFragmentToMisRecetasFragment(userInfo = "")
+            )
         }
 
         binding.buttonAdd.setOnClickListener {
+
+            recetaSingleton.temporal.id=args.userInfo.toString()+"-x"
             findNavController().navigate(
                 NuevaRecetaFragmentDirections.actionNuevaRecetaFragmentToNavigation3(userInfo = args.userInfo)
             )
         }
+
     }
+
 
     private fun initRecyclerView(){
         binding.rvUsers.adapter = recetaAdapter
@@ -73,25 +101,11 @@ class NuevaRecetaFragment : Fragment() {
                 LinearLayoutManager.VERTICAL,
                 false
             )
-        loadDataRecyclerView()
-
-    }
-
-    private fun loadDataRecyclerView(){
-        lifecycleScope.launch (Dispatchers.Main) {
-            var rec = MedicamentosUseCase().getAll()
-            if (rec != null) {
-                insertReceta(rec)
-            }else{
-                Log.d("uce", rec?.toString().toString())
-            }
-        }
+        insertReceta(recetaSingleton.listaMed.toList())
     }
 
     private fun insertReceta(medInfo: List<MedInfo>){
-        recetaList.addAll(medInfo)
-        recetaAdapter.submitList(recetaList.toList())
-
+        recetaAdapter.submitList(medInfo)
     }
 
 }

@@ -13,14 +13,14 @@ class RecetaRepository {
 
     suspend fun save(
         id:String,
-        medicamentos:MutableList<String>,
+        medicamentos:List<String>,
         estado:Boolean,
         idUser:String,
         fecha_registro:String
     ) : Result<Receta> = runCatching{
         val rec =
             Receta(id, estado, medicamentos, idUser, fecha_registro)
-        db.collection("Recetas").add(rec).await()
+        db.collection("Recetas").document(id).set(rec).await()
         return@runCatching rec
     }
 

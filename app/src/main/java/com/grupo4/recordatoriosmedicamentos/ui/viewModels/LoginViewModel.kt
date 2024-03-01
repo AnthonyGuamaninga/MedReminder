@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.grupo4.recordatoriosmedicamentos.data.network.entities.userData.UserDB
-import com.grupo4.recordatoriosmedicamentos.logic.usercases.network.user.singInUserCase
+import com.grupo4.recordatoriosmedicamentos.logic.usercases.network.user.UserUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -43,7 +43,7 @@ class LoginViewModel : ViewModel() {
 
     fun singInUser(email: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val us = singInUserCase().invoke(email, password)
+            val us = UserUseCase().singIn(email, password)
             if (us != null) {
                 _user.postValue(us!!)
             } else {

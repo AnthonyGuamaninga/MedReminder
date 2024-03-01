@@ -8,7 +8,7 @@ class RecetaUseCase {
         return RecetaRepository().getRecetaById(id).getOrNull()
     }
 
-    suspend fun Save(id: String,estado:Boolean,medicamentos:MutableList<String>,idUser:String, fecha:String):Receta?{
+    suspend fun Save(id: String,estado:Boolean,medicamentos:List<String>,idUser:String, fecha:String):Receta?{
         return RecetaRepository().save(id, medicamentos, estado, idUser,fecha).getOrNull()
     }
 
