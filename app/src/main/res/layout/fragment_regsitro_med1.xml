@@ -6,68 +6,62 @@
     android:layout_height="500dp"
     tools:context=".ui.fragments.RegsitroMed1Fragment">
 
-   <androidx.constraintlayout.widget.ConstraintLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/registra_tu_medicina"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:gravity="center"
+            android:text="Registro nuevo medicamento"
+            android:textColor="@color/registra_tu_medicina_color"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ingrese_el_nombre_del_medicamento_que_desea_agregar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Ingrese el nombre del medicamento que desea agregar"
+            android:textColor="@color/registra_tu_medicina_color"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registra_tu_medicina" />
 
 
-       <TextView
-           android:id="@+id/registra_tu_medicina"
-           android:layout_width="419dp"
-           android:layout_height="47dp"
-           android:layout_marginTop="68dp"
-           android:gravity="center"
-           android:text="Registro nuevo medicamento"
-           android:textColor="@color/registra_tu_medicina_color"
-           android:textSize="28sp"
-           android:textStyle="bold"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent" />
+        <AutoCompleteTextView
+            android:id="@+id/autoCompletetxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:completionThreshold="1"
+            android:maxLines="1"
+            android:background="@drawable/registrar_med"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:hint="Ejem: Ibuprofen..."
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray_am"
+            android:imeOptions="actionDone"/>
 
-       <TextView
-           android:id="@+id/ingrese_el_nombre_del_medicamento_que_desea_agregar"
-           android:layout_width="327.4dp"
-           android:layout_height="38.4dp"
-           android:layout_marginTop="40dp"
-           android:gravity="center"
-           android:text="Ingrese el nombre del medicamento que desea agregar"
-           android:textColor="@color/registra_tu_medicina_color"
-           android:textSize="14sp"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@+id/registra_tu_medicina" />
-
-       <EditText
-           android:id="@+id/registrar_medicina"
-           android:layout_width="300dp"
-           android:layout_height="50dp"
-           android:layout_marginTop="48dp"
-           android:background="@drawable/registrar_med"
-           android:gravity="center"
-           android:hint="Ejm: Ibuprofeno, paracetamol, etc."
-           android:textColorHint="@color/gray_am"
-           android:textColor="@color/white"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="0.495"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@+id/ingrese_el_nombre_del_medicamento_que_desea_agregar" />
-
-       <Button
-           android:id="@+id/btnSiguiente"
-           android:layout_width="150dp"
-           android:layout_height="50dp"
-
-           android:backgroundTint="@color/dark_green"
-
-           android:text="Siguiente"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-
-           app:layout_constraintHorizontal_bias="0.498"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@+id/registrar_medicina"
-           app:layout_constraintVertical_bias="0.37" />
-   </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnSiguiente"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/teal_700"
+            android:text="SIGUIENTE" />
+    </LinearLayout>
 
 </FrameLayout>
