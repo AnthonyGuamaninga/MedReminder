@@ -30,8 +30,8 @@
 
         <ImageView
             android:id="@+id/imgDrug"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_margin="20dp"
             android:scaleType="fitXY" />

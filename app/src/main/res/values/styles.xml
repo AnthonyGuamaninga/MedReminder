@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="text_input_layout_medicamento_registro">
-
-        <item name="android:background" >#2DAD99</item>
-        <item name="android:layout_height" >90dp</item>
+        <item name="android:background" >@color/dark_green</item>
+        <item name="android:layout_height" >wrap_content</item>
+        <item name="android:layout_height" >wrap_content</item>
     </style>
 
     <style name="MyMenuTextAppearance" parent="@android:style/TextAppearance">
